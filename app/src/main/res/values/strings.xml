@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Unidad 4 - Tarea 7 (Gestor Deberes)</string>
+    <string name="add_homework">Añade una tarea</string>
+    <string name="select_subject">Selecciona un módulo</string>
+    <string name="description_hint">Tarea...</string>
+    <string name="due_date_hint">dd/mm/yyyy</string>
+    <string name="cancel">Cancelar</string>
+    <string name="save">Guardar</string>
+</resources>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Archivo bottom_sheet_homework_options.xml -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Opción para editar el deber -->
+    <TextView
+        android:id="@+id/editOption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="Editar"
+        android:textAppearance="?attr/textAppearanceListItem"
+        android:drawableStart="@android:drawable/ic_menu_edit"
+        android:drawablePadding="8dp" />
+
+    <!-- Opción para eliminar el deber -->
+    <TextView
+        android:id="@+id/deleteOption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="Eliminar"
+        android:textAppearance="?attr/textAppearanceListItem"
+        android:drawableStart="@android:drawable/ic_menu_delete"
+        android:drawablePadding="8dp" />
+
+    <!-- Opción para marcar como completado -->
+    <TextView
+        android:id="@+id/completeOption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="Marcar como completado"
+        android:textAppearance="?attr/textAppearanceListItem"
+        android:drawableStart="@android:drawable/ic_menu_set_as"
+        android:drawablePadding="8dp" />
+</LinearLayout>

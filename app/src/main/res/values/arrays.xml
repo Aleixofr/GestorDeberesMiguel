@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="subjects_array">
+        <item>PMDM</item>
+        <item>AD</item>
+        <item>EIE</item>
+        <item>PDP</item>
+        <item>DI</item>
+    </string-array>
+</resources>
