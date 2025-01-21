@@ -43,7 +43,7 @@ public class DataBase extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase DB) {
 
         DB.execSQL(CREATE_TABLE_HOMEWORK);
-        DB.close();
+        //DB.close();
     }
 
     @Override
@@ -66,7 +66,7 @@ public class DataBase extends SQLiteOpenHelper {
 
         // Insertamos el deber en la base de datos y devolvemos el ID generado
         long id = DB.insert(TABLE_HOMEWORK, null, values);
-        DB.close(); // Cerramos la base de datos
+        //DB.close(); // Cerramos la base de datos
         return id;
     }
 
@@ -96,7 +96,7 @@ public class DataBase extends SQLiteOpenHelper {
             }
         }
 
-        db.close();
+        //db.close();
 
         return homeworkList;
     }
@@ -119,7 +119,7 @@ public class DataBase extends SQLiteOpenHelper {
 
             cursor.close();
         }
-        DB.close();
+        //DB.close();
 
         return homework;
     }
@@ -144,7 +144,7 @@ public class DataBase extends SQLiteOpenHelper {
     public void deleteHomework(int id) {
         SQLiteDatabase DB = this.getWritableDatabase(); // Obtenemos la base de datos en modo escritura
         DB.delete(TABLE_HOMEWORK, HOMEWORK_ID + " = ?", new String[]{String.valueOf(id)}); // Eliminamos el deber
-        DB.close(); // Cerramos la base de datos
+        //DB.close(); // Cerramos la base de datos
     }
 
 }
