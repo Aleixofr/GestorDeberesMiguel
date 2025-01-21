@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private HomeworkAdapter adapter;
     private List<Homework> homeworkList;
+    private DataBase dataBase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +40,9 @@ public class MainActivity extends AppCompatActivity {
         // Inicialización de componentes
         recyclerView = findViewById(R.id.recyclerView);
         FloatingActionButton fab = findViewById(R.id.fab);
-        homeworkList = new ArrayList<>();
+
+        dataBase = new DataBase(this);
+        homeworkList = dataBase.getHomeworkList();
 
         // Crear y configurar el adaptador
         adapter = new HomeworkAdapter(homeworkList, homework -> showBottomSheet(homework));
@@ -69,13 +72,18 @@ public class MainActivity extends AppCompatActivity {
             dialog.setArguments(args);
         }
         dialog.setOnHomeworkSavedListener(homework -> {
-                    if (homeworkToEdit == null) {
-                        homeworkList.add(homework);
-                    } else {
-                        homeworkList.set(homeworkList.indexOf(homeworkToEdit), homework);
-                    }
+            if (homeworkToEdit == null) {
+                // Insertar nueva tarea
+                long id = dataBase.insertHomework(homework);
+                homeworkList.add(homework);
+            } else {
+                // Actualizar tarea existente
+                int id = homeworkList.indexOf(homeworkToEdit);
+                dataBase.updateHomework(homework, id);
+                homeworkList.set(homeworkList.indexOf(homeworkToEdit), homework);
+            }
             adapter.notifyDataSetChanged();
-                });
+        });
         dialog.show(getSupportFragmentManager(), "AddHomeworkDialog");
 //
 //        AddHomeworkDialogFragment dialog = AddHomeworkDialogFragment.newInstance(homeworkToEdit);
@@ -130,7 +138,8 @@ public class MainActivity extends AppCompatActivity {
                 .setTitle("Confirmar eliminación")
                 .setMessage("¿Estás seguro de que deseas eliminar este deber?")
                 .setPositiveButton("Eliminar", (dialog, which) -> {
-                    homeworkList.remove(homework);
+                    int id = homeworkList.indexOf(homework);
+                    dataBase.deleteHomework(id);
                     adapter.notifyDataSetChanged();
                 })
                 .setNegativeButton("Cancelar", null)
